@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Beach City Community – a Steven Universe fan hangout</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap">
+<style>
+:root{--bg:#FFF4F8;--ink:#2B1B3A;--card:#fff;--line:#2B1B3A;--muted:#5A4668;--pink:#F9A8C9;--yel:#FFD84D;--ha:#FFC9DE;--hb:#FFD9A8;--sea:#7FD6E0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1433;--ink:#FFF1F7;--card:#2B1F4D;--line:#F9A8C9;--muted:#D9C5E6;--ha:#5B2F86;--hb:#B4457F}}
+:root[data-theme="dark"]{--bg:#1D1433;--ink:#FFF1F7;--card:#2B1F4D;--line:#F9A8C9;--muted:#D9C5E6;--ha:#5B2F86;--hb:#B4457F}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.6 Nunito,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,summary b,.btn{font-family:Fredoka,"Arial Rounded MT Bold",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:4px dashed var(--line);outline-offset:3px}
+.skip{position:absolute;left:.5rem;top:-4rem;background:var(--yel);color:#2B1B3A;padding:.7rem 1rem;border:3px solid #2B1B3A;border-radius:.8rem;z-index:9;font-weight:800}
+.skip:focus{top:.5rem}
+.ic{width:1.6em;height:1.6em;flex:none;fill:var(--c,#fff);stroke:#2B1B3A;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.ic.sm{width:1.15em;height:1.15em}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem 1rem;max-width:64rem;margin:0 auto;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:.5rem;font:700 1.2rem Fredoka,sans-serif;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;padding:.55rem 1.1rem;background:var(--pink);color:#2B1B3A;border:3px solid var(--line);border-radius:999px;box-shadow:0 4px 0 var(--line);font-size:1.05rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.btn.alt{background:var(--card);color:var(--ink)}
+.hero{position:relative;margin-top:-4.2rem;padding:5.5rem 1rem 4.5rem;text-align:center;background:linear-gradient(180deg,var(--ha),var(--hb));overflow:hidden}
+.hero>*{position:relative}
+.badge{width:9rem;height:9rem;animation:bob 3.5s ease-in-out infinite}
+.badge .st{transform-origin:60px 62px;animation:pop 1s .2s cubic-bezier(.3,1.7,.5,1) both}
+.hero h1{font-size:clamp(2.1rem,8vw,3.8rem);line-height:1.1;margin:.6rem auto;max-width:15em}
+.hero p{max-width:34rem;margin:0 auto 1.2rem}
+.pills{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;padding:0;margin:0;list-style:none}
+.wave{position:absolute!important;left:0;right:0;bottom:-1px;height:30px;background:radial-gradient(circle at 25px 30px,transparent 24px,var(--bg) 25px) 0 0/50px 30px repeat-x;animation:drift 6s linear infinite}
+.bubbles{position:absolute!important;inset:0;pointer-events:none}
+.bubbles i{position:absolute;bottom:-60px;left:var(--x);width:var(--s);height:var(--s);border:3px solid rgba(255,255,255,.9);border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8) 0 12%,rgba(255,255,255,.2) 40%);animation:rise var(--t) var(--d) linear infinite}
+section{padding:2.5rem 0}
+h2{display:flex;align-items:center;gap:.6rem;font-size:clamp(1.6rem,6vw,2.2rem);line-height:1.2;margin:0 0 .8rem}
+.card{background:var(--card);border:3px solid var(--line);border-radius:1.2rem;box-shadow:0 6px 0 var(--line);padding:1.1rem}
+.muted{color:var(--muted)}
+.stage{text-align:center}
+.stage-svg{width:9rem;height:9rem;overflow:visible}
+.stage-svg use{--c:var(--pink)}
+.gemg{transform-origin:40px 40px;animation:bob 3s ease-in-out infinite}
+.crack{opacity:0;stroke:#2B1B3A;stroke-width:2.5;fill:none}
+.bub{fill:rgba(127,214,224,.35);stroke:var(--sea);stroke-width:3;opacity:0;transform-origin:40px 40px}
+[data-s="3"] .bub{opacity:1;animation:bob 2.4s ease-in-out infinite}
+[data-s="5"] .gemg{filter:grayscale(1);animation:shake .6s}
+[data-s="5"] .crack{opacity:1}
+.pips{display:flex;justify-content:center;gap:.6rem;margin:.2rem 0}
+.pips .ic{--c:#fff;opacity:.5;transition:.3s}
+.pips .on{--c:#FF7A8A;opacity:1;transform:scale(1.2)}
+.stage h3{font-size:1.5rem;margin:.4rem 0 .2rem}
+.row{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1rem}
+.note{margin-top:1.4rem;display:grid;gap:.4rem}
+.note p{margin:0}
+.legend,.chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:.8rem 0 0;list-style:none}
+.chip{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .8rem .3rem .55rem;border:2px solid #2B1B3A;border-radius:999px;font-weight:800;font-size:.95rem;color:#2B1B3A;background:#FFE9A0}
+.chip.k{background:#FFB38A}
+.chip.x{background:#4B2A86;color:#fff;border-color:#2B1B3A}
+.chip.x .ic{--c:#C9A6F0}
+details{background:var(--card);border:3px solid var(--line);border-radius:1.2rem;box-shadow:0 5px 0 var(--line);margin:0 0 1rem}
+summary{display:flex;align-items:center;gap:.8rem;min-height:4.2rem;padding:.7rem .9rem;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.ico{display:grid;place-items:center;width:3rem;height:3rem;flex:none;border:3px solid #2B1B3A;border-radius:50%;background:var(--b)}
+.st{flex:1;display:grid;line-height:1.25}
+summary b{font-size:1.2rem}
+summary small{color:var(--muted);font-size:.95rem}
+summary::after{content:"";width:.8rem;height:.8rem;flex:none;border:solid var(--ink);border-width:0 4px 4px 0;transform:rotate(45deg);transition:transform .25s;margin:0 .3rem .3rem 0}
+details[open] summary::after{transform:rotate(225deg);margin:.3rem .3rem 0 0}
+.bd{padding:0 1rem 1.1rem;animation:pop .35s ease-out}
+.bd .lead{font-weight:800;margin:.2rem 0 .5rem}
+.bd ul.l{margin:0;padding-left:1.2rem}
+.bd li{margin:.4rem 0}
+.three{display:grid;gap:1rem;margin-top:1rem}
+.three .card{display:grid;gap:.3rem}
+.three h3{margin:0;font-size:1.3rem;display:flex;gap:.5rem;align-items:center}
+.three p{margin:0}
+.burst{position:fixed;width:1.4rem;height:1.4rem;pointer-events:none;z-index:9;animation:fly .9s ease-out forwards}
+footer{padding:2rem 1rem 3rem;text-align:center;background:linear-gradient(180deg,var(--bg),var(--ha))}
+footer h2{justify-content:center}
+footer p{max-width:36rem;margin:.4rem auto}
+@media(min-width:48rem){.three{grid-template-columns:repeat(3,1fr)}.hero{padding-top:6rem}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes drift{to{background-position-x:50px}}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-34rem);opacity:0}}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) rotate(240deg) scale(.3);opacity:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.bubbles{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></symbol>
+<symbol id="i-gem" viewBox="0 0 24 24"><path d="M7 3h10l5 6-10 12L2 9z"/><path d="M2 9h20M12 9L7 3M12 9l5-6M12 9v12" fill="none"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21C4 15 2 11 2 7.5A5 5 0 0 1 12 6a5 5 0 0 1 10 1.5C22 11 20 15 12 21z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l9 3v7c0 5-4 8.5-9 10-5-1.5-9-5-9-10V5z"/><circle cx="12" cy="11" r="3" fill="#F9A8C9"/></symbol>
+<symbol id="i-frame" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="2" fill="#FFD84D"/><path d="M3 18l6-5 4 3 3-2 5 4" fill="none"/></symbol>
+<symbol id="i-poof" viewBox="0 0 24 24"><path d="M6.5 19a4.5 4.5 0 0 1-.6-8.9 6 6 0 0 1 11.4-1.2A5 5 0 0 1 17.5 19z"/><path d="M9 14.5h.01M15 14.5h.01" stroke-width="3"/></symbol>
+<symbol id="i-soap" viewBox="0 0 24 24"><rect x="2" y="11" width="14" height="9" rx="3"/><circle cx="18" cy="7" r="3.2"/><circle cx="12" cy="6" r="2.2"/><circle cx="7.5" cy="4" r="1.3"/></symbol>
+<symbol id="i-no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M5 19L19 5" fill="none" stroke-width="2.6"/></symbol>
+<symbol id="i-brush" viewBox="0 0 24 24"><path d="M20 3c-6 3-10 7-11 11l3 3c4-1 8-5 8-14z"/><path d="M9 14c-3 0-4 2-4 4s-1 3-2 3c4 1 8 0 9-4z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c4 4 4 16 0 20M12 2c-4 4-4 16 0 20" fill="none"/></symbol>
+<symbol id="i-spam" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><rect x="6.5" y="6.5" width="11" height="11" rx="2"/><rect x="10.5" y="10.5" width="11" height="11" rx="2"/></symbol>
+<symbol id="i-flier" viewBox="0 0 24 24"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M9 7v10" stroke-dasharray="2 2" fill="none"/></symbol>
+<symbol id="i-talk" viewBox="0 0 24 24"><path d="M3 4h18v12H10l-5 4v-4H3z"/><path d="M8 8h8M8 12h5" fill="none"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14l-1 14H6z"/><path d="M3 7h18M9 7V4h6v3M10 11v6M14 11v6" fill="none"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" fill="none"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" fill="none"/></symbol>
+<symbol id="i-bubble" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M6.5 9.5a6 6 0 0 1 3.5-4" fill="none"/></symbol>
+</svg>
+
+<a class="skip" href="#rules">Skip to the rules</a>
+
+<header class="top">
+  <a class="brand" href="#top"><svg class="ic" style="--c:#FFD84D" aria-hidden="true"><use href="#i-star"/></svg>Beach City Community</a>
+  <button class="btn alt" id="theme" type="button" aria-label="Switch between light and dark mode"><svg class="ic" style="--c:#FFD84D" aria-hidden="true"><use id="themeIc" href="#i-moon"/></svg><span id="themeTx">Dark</span></button>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <svg class="badge" viewBox="0 0 120 120" role="img" aria-label="Pink badge with a yellow star">
+    <circle cx="60" cy="60" r="56" fill="#F9A8C9" stroke="#2B1B3A" stroke-width="5"/>
+    <path class="st" d="M60 24L69.4 49.1 96.1 50.3 75.2 66.9 82.3 92.7 60 78 37.7 92.7 44.8 66.9 23.9 50.3 50.6 49.1Z" fill="#FFD84D" stroke="#2B1B3A" stroke-width="5" stroke-linejoin="round"/>
+  </svg>
+  <h1>Welcome to our little slice of Beach City</h1>
+  <p>A Steven Universe fan community for sharing art, feelings, theories and chats. Read the Gem Guidelines so everyone feels safe and respected.</p>
+  <ul class="pills">
+    <li><a class="btn" href="#strikes">How strikes work</a></li>
+    <li><a class="btn alt" href="#rules">The rules</a></li>
+    <li><a class="btn alt" href="#join">Join in</a></li>
+  </ul>
+  <div class="wave" aria-hidden="true"></div>
+</div>
+
+<section id="strikes"><div class="wrap">
+  <h2><svg class="ic" style="--c:#7FD6E0" aria-hidden="true"><use href="#i-bubble"/></svg>How getting “bubbled” works</h2>
+  <p>Sometimes we make mistakes, and that's okay! We grow! To keep the Earth safe, here is how our timeout system works. Try it below, it's only a demo.</p>
+  <div class="card stage" id="stage" data-s="0">
+    <svg class="stage-svg" viewBox="0 0 80 80" aria-hidden="true"><g class="gemg"><use href="#i-gem" x="10" y="10" width="60" height="60"/><path class="crack" d="M40 14l-6 16 8 8-7 14 5 10"/></g><circle class="bub" cx="40" cy="40" r="37"/></svg>
+    <div class="pips" aria-hidden="true"><svg class="ic"><use href="#i-gem"/></svg><svg class="ic"><use href="#i-gem"/></svg><svg class="ic"><use href="#i-gem"/></svg></div>
+    <div aria-live="polite"><h3 id="sT"></h3><p id="sD" class="muted" style="margin:0"></p></div>
+    <div class="row"><button class="btn" id="sB" type="button"></button><button class="btn alt" id="sR" type="button" hidden>Start over</button></div>
+  </div>
+  <div class="note">
+    <p><b>Three Strikes:</b> you can receive a maximum of 3 Strikes. A Strike puts you in Read-Only mode.</p>
+    <p><b>The Bubble:</b> after a 3rd Strike your account is banned from the community, but you can always submit an appeal to talk to us about it.</p>
+    <p><b>Shattered:</b> if you are unbanned but break the rules again, it's a permanent ban with no chance to return.</p>
+    <p><b>Note from the Leaders:</b> the Admin team can ban a user without explaining the reason if it's an emergency. If these rules don't fit your vibe, you're completely free to leave the community at any time. No hard feelings! 🌸</p>
+  </div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <h2><svg class="ic" style="--c:#F9A8C9" aria-hidden="true"><use href="#i-shield"/></svg>The Gem Guidelines</h2>
+  <p>Our rules aren't here to trap you or make you feel bad. They're here so everyone feels safe and respected. Even the Crystal Gems need a plan sometimes!</p>
+  <ul class="legend" aria-label="What the labels mean">
+    <li class="chip"><svg class="ic sm" aria-hidden="true" style="--c:#FFD84D"><use href="#i-star"/></svg>Warning or hidden/poofed (deleted)</li>
+    <li class="chip k"><svg class="ic sm" aria-hidden="true"><use href="#i-clock"/></svg>Strike (Read-Only for the time shown)</li>
+    <li class="chip x"><svg class="ic sm" aria-hidden="true"><use href="#i-gem"/></svg>Shattered (permanent ban)</li>
+  </ul>
+  <p style="margin:1rem 0"><button class="btn alt" id="all" type="button" aria-pressed="false">Open all rules</button></p>
+  <div id="list"></div>
+</div></section>
+
+<section id="join"><div class="wrap">
+  <h2><svg class="ic" style="--c:#FF7A8A" aria-hidden="true"><use href="#i-heart"/></svg>What we do here</h2>
+  <div class="three">
+    <div class="card"><h3><svg class="ic" style="--c:#FFD84D" aria-hidden="true"><use href="#i-frame"/></svg>Share</h3><p>Post your art, edits and writing. Always with a Steven Universe picture!</p></div>
+    <div class="card"><h3><svg class="ic" style="--c:#7FD6E0" aria-hidden="true"><use href="#i-talk"/></svg>Chat</h3><p>Hang out in public chats and treat everyone like a friend.</p></div>
+    <div class="card"><h3><svg class="ic" style="--c:#C9A6F0" aria-hidden="true"><use href="#i-gem"/></svg>Wonder</h3><p>Share your feelings and theories about the show.</p></div>
+  </div>
+  <p style="text-align:center;margin-top:1.6rem"><button class="btn" id="pledge" type="button" aria-pressed="false">I've read the rules</button></p>
+</div></section>
+</main>
+
+<footer>
+  <h2><svg class="ic" style="--c:#FFD84D" aria-hidden="true"><use href="#i-star"/></svg>Believe in Steven!</h2>
+  <p>Stay cool, because we really don't want to shatter anyone!</p>
+  <p class="muted"><small>An unofficial, non-profit fan community. Steven Universe belongs to Rebecca Sugar and Cartoon Network. Nobody is paid here.</small></p>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s),L=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){return null}};
+const X=t=>['x',t];
+const R=[
+{i:'frame',c:'#FFD84D',t:'Keep it crystal clear',s:'Off-topic posts',l:'Everything you share should be about Steven Universe!',li:['Post without a SU-related image? We hide it and give you a gentle warning.','Exceptions: quick sh*tposts, RP searches or textless posts are fine, only if they have a Steven Universe picture attached.'],ch:[['w','Hidden + warning'],['k','Repeat: 3-hour Strike']]},
+{i:'poof',c:'#F9A8C9',t:'Love and peace on Earth',s:'No aggression',l:'No Homeworld hostility here. Treat everyone like a friend.',li:['<b>In chats:</b> being mean gets you a warning or a kick from the chat to cool down. If a whole group is fighting, everyone involved gets a warning.','<b>In comments:</b> mean comments are poofed (deleted) and you get a warning.','<b>Newbies:</b> joining just to be aggressive means you are bubbled immediately, with the right to appeal.'],ch:[['w','Warning or poofed'],['k','Repeat: 24-hour Strike']]},
+{i:'soap',c:'#9BE3EE',t:'Wash your mouth with soap',s:'Swearing',l:'If you really, really need a bad word, it MUST be fully censored at the root of the word.',li:['<b>In profiles:</b> uncensored swears in your username, bio, background or profile picture get your profile hidden until you fix it.','<b>In posts and chats:</b> uncensored posts or comments are poofed and you get a warning.'],ch:[['w','Profile hidden until fixed'],['w','Poofed + warning']]},
+{i:'no',c:'#C9A6F0',t:'Think of the Pebbles',s:'No 16+/18+ content',l:'This is a family-friendly zone!',li:['<b>16+ profiles:</b> things like ahegao, suggestive jokes or looking for ERP (erotic roleplay) in your bio or theme, even if “censored”, get your profile hidden and a warning.','<b>16+ posts and chats:</b> suggestive messages or posts are poofed and you get a 1-hour Strike.','<b>18+ and ERP:</b> accounts made purely for ERP, sharing explicit 18+ content or listing detailed fetishes are shattered without warning. Let\'s keep it wholesome!'],ch:[['w','Profile: hidden + warning'],['k','Posts/chats: 1-hour Strike'],['k','Repeat (16+): 24-hour Strike'],['x','18+ / ERP: Shattered']]},
+{i:'brush',c:'#FFB38A',t:'Sharing true art',s:'Plagiarism and AI',l:'We want to see your unique shine!',li:['<b>AI content:</b> passing off AI-generated art, poems or text as your own personal work gets your post hidden and a warning.','<b>Art theft:</b> stealing art, edits or writing made by real people and claiming you made it is super uncool. Your post is hidden and you immediately get a 24-hour Strike.'],ch:[['w','AI: hidden + warning'],['k','AI repeat: 24-hour Strike'],['k','Art theft: 24-hour Strike'],X('Repeat theft: Shattered')]},
+{i:'globe',c:'#9BE3EE',t:'Leaving Earth politics out of it',s:'No real-world politics',l:'We are here to escape into cartoons, not argue about real life!',li:['<b>In chats and posts:</b> real-world politics, controversial ideologies, propaganda and heavy social issues are strictly banned. They are poofed instantly and you get a 24-hour Strike, with no warnings.','<b>In profiles:</b> military symbols, political flags or political statements get your profile hidden until you change it.'],ch:[['k','24-hour Strike, no warning'],['w','Profile hidden until changed']]},
+{i:'spam',c:'#FF9AA2',t:'No corrupted spam',s:'Spam and raids',l:'Keep chats and the feed calm and readable.',li:['<b>In chats:</b> sending more than 5 of the exact same messages or stickers in 30 seconds is too overwhelming. You get a warning, and if you keep going, you are kicked from the chat.','<b>In the feed:</b> posting the exact same blog multiple times gets the duplicates hidden and a warning.','<b>Raids:</b> trying to organize a spam raid on our community means a permanent shattering.'],ch:[['w','Warning / duplicates hidden'],['k','Repeat: 24-hour Strike'],X('Raids: Shattered')]},
+{i:'flier',c:'#FFD84D',t:'Fliers in Beach City',s:'Advertising',l:'Keep the fliers to the right places.',li:['<b>Accidental links:</b> dropping random links without meaning to advertise gets your profile hidden and a friendly warning to remove it. You can always credit artists or aesthetic makers!','<b>Self-promo:</b> advertising your own TikTok, YouTube, Telegram and so on is only allowed with a “Verified” title. Otherwise it is hidden and you get a warning.','<b>Other communities:</b> purposely advertising other communities is an instant, permanent shattering.'],ch:[['w','Hidden + warning'],['k','Repeat: 24-hour Strike'],X('Other communities: Shattered')]},
+{i:'talk',c:'#C9A6F0',t:'Universal translator',s:'Language rules',l:'We need to be able to understand each other!',li:['<b>In chats:</b> too much foreign language in public chats gets you a warning. If you ignore it, you might be kicked from the chat.','<b>In posts:</b> posts written entirely in a foreign language with no translation are hidden and you get a warning.'],ch:[['w','Warning'],['w','Post hidden + warning']]},
+{i:'trash',c:'#FF8A8A',t:'No littering allowed',s:'Scams and blackmail',l:'This is the most serious rule of all.',li:['Any attempt to scam people, extort money, blackmail someone (especially with intimate photos), or sell illegal content, bots, scripts or codes means a permanent shattering, with zero chance of getting back.'],ch:[X('Shattered')]}
+];
+const ci={w:'star',k:'clock',x:'gem'};
+const chip=([k,t])=>`<li class="chip ${k=='w'?'':k}"><svg class="ic sm" aria-hidden="true"${k=='w'?' style="--c:#FFD84D"':''}><use href="#i-${ci[k]}"/></svg>${t}</li>`;
+$('#list').innerHTML=R.map((r,n)=>{
+ const chips=r.ch.map(chip).join('');
+ return `<details><summary><span class="ico" style="--b:${r.c}"><svg class="ic" aria-hidden="true"><use href="#i-${r.i}"/></svg></span><span class="st"><b>${r.t}</b><small>${r.s}</small></span></summary><div class="bd"><p class="lead">${r.l}</p><ul class="l">${r.li.map(x=>`<li>${x}</li>`).join('')}</ul><ul class="chips" aria-label="Consequences">${chips}</ul></div></details>`}).join('');
+$('#all').onclick=e=>{const b=e.currentTarget,o=b.getAttribute('aria-pressed')!='true';document.querySelectorAll('#list details').forEach(d=>d.open=o);b.setAttribute('aria-pressed',o);b.textContent=o?'Close all rules':'Open all rules'};
+
+const S=[['Clean slate','No strikes. Share, chat and have fun!','Give me a strike (demo)'],
+['Strike 1 of 3','You are in Read-Only mode for the length of the strike. You can read, but not post or chat.','Another strike (demo)'],
+['Strike 2 of 3','Read-Only mode again. One more and you will be bubbled.','A third strike (demo)'],
+['Bubbled','A 3rd Strike bans your account from the community. Don\'t worry, you can always submit an appeal to talk to us.','Submit an appeal'],
+['Unbanned','Welcome back! But if you break the rules again, the ban is permanent.','Break the rules again (demo)'],
+['Shattered','A permanent ban with no chance to return.','Start over']];
+let s=0;const st=$('#stage'),pips=st.querySelectorAll('.pips .ic');
+function draw(){st.dataset.s=s;$('#sT').textContent=S[s][0];$('#sD').textContent=S[s][1];$('#sB').textContent=S[s][2];$('#sR').hidden=!s||s==5;pips.forEach((p,i)=>p.classList.toggle('on',s>0&&s<4&&i<s))}
+$('#sB').onclick=()=>{s=s==5?0:s+1;draw()};$('#sR').onclick=()=>{s=0;draw()};draw();
+
+const bb=$('#bubbles');for(let i=0;i<14;i++){const b=document.createElement('i');b.style.cssText=`--x:${Math.random()*94}%;--s:${18+Math.random()*40}px;--t:${7+Math.random()*7}s;--d:-${Math.random()*12}s`;bb.appendChild(b)}
+
+const th=$('#theme');function theme(m){document.documentElement.dataset.theme=m;const d=m=='dark';$('#themeIc').setAttribute('href',d?'#i-sun':'#i-moon');$('#themeTx').textContent=d?'Light':'Dark'}
+const sv=L('bc-theme');theme(sv||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+th.onclick=()=>{const m=document.documentElement.dataset.theme=='dark'?'light':'dark';theme(m);L('bc-theme',m)};
+
+const pl=$('#pledge');
+function burst(el){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const r=el.getBoundingClientRect();for(let i=0;i<12;i++){const e=document.createElementNS('http://www.w3.org/2000/svg','svg');e.setAttribute('class','burst ic');e.setAttribute('aria-hidden','true');e.style.cssText=`--c:${i%2?'#FFD84D':'#F9A8C9'};left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;--dx:${Math.cos(i*.52)*140}px;--dy:${Math.sin(i*.52)*140-40}px`;e.innerHTML='<use href="#i-star"/>';document.body.appendChild(e);setTimeout(()=>e.remove(),950)}}
+function pledge(on,fx){pl.setAttribute('aria-pressed',on);pl.textContent=on?'Thanks! Believe in Steven!':'I\'ve read the rules';if(on&&fx)burst(pl)}
+pledge(L('bc-read')=='1');
+pl.onclick=()=>{const on=pl.getAttribute('aria-pressed')!='true';pledge(on,1);L('bc-read',on?'1':'0')};
+</script>
+</body>
+</html>
