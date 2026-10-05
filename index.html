@@ -181,7 +181,6 @@ footer p{max-width:36rem;margin:.4rem auto}
   <div class="wave" aria-hidden="true"></div>
 </div>
 
-<!-- FUN ADDITION: Random Quote Box -->
 <div class="quote-box wrap">
   <p id="quote-text">"If every porkchop were perfect, we wouldn't have hotdogs!"</p>
   <small id="quote-author">- Greg Universe</small>
@@ -220,7 +219,7 @@ footer p{max-width:36rem;margin:.4rem auto}
     <div class="card"><h3><svg class="ic" style="--c:#7FD6E0" aria-hidden="true"><use href="#i-talk"/></svg>Chat</h3><p>Hang out in public chats and treat everyone like a friend.</p></div>
     <div class="card"><h3><svg class="ic" style="--c:#C9A6F0" aria-hidden="true"><use href="#i-gem"/></svg>Wonder</h3><p>Share your feelings and theories about the show.</p></div>
   </div>
-  <p style="text-align:center;margin-top:2.5rem"><button class="btn" id="pledge" type="button" aria-pressed="false" style="font-size: 1.3rem; padding: 0.8rem 2rem;">I've read the rules!</button></p>
+  <p style="text-align:center;margin-top:2.5rem"><button class="btn" id="pledge" type="button" aria-pressed="false" style="font-size: 1.3rem; padding: 0.8rem 2rem;">I've read the rules! ★ </button></p>
 </div></section>
 </main>
 
@@ -234,7 +233,7 @@ footer p{max-width:36rem;margin:.4rem auto}
 const $=s=>document.querySelector(s),L=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){return null}};
 const X=t=>['x',t];
 const R=[
-{i:'frame',c:'#FFD84D',t:'Keep it crystal clear',s:'Off-topic posts',l:'Everything you share should be about Steven Universe!',li:['Post without a SU-related image? We hide it and give you a gentle warning.','Exceptions: quick sh*tposts, RP searches or textless posts are fine, only if they have a Steven Universe picture attached.'],ch:[['w','Hidden + warning'],['k','Repeat: 3-hour Strike']]},
+{i:'frame',c:'#FFD84D',t:'Keep it crystal clear',s:'Off-topic posts',l:'Everything you share should be about Steven Universe!',li:['Post without a SU-related image? We hide it and give you a gentle warning.','Exceptions: quick sh★tposts, RP searches or textless posts are fine, only if they have a Steven Universe picture attached.'],ch:[['w','Hidden + warning'],['k','Repeat: 3-hour Strike']]},
 {i:'poof',c:'#F9A8C9',t:'Love and peace on Earth',s:'No aggression',l:'No Homeworld hostility here. Treat everyone like a friend.',li:['<b>In chats:</b> being mean gets you a warning or a kick from the chat to cool down. If a whole group is fighting, everyone involved gets a warning.','<b>In comments:</b> mean comments are poofed (deleted) and you get a warning.','<b>Newbies:</b> joining just to be aggressive means you are bubbled immediately, with the right to appeal.'],ch:[['w','Warning or poofed'],['k','Repeat: 24-hour Strike']]},
 {i:'soap',c:'#9BE3EE',t:'Wash your mouth with soap',s:'Swearing',l:'If you really, really need a bad word, it MUST be fully censored at the root of the word.',li:['<b>In profiles:</b> uncensored swears in your username, bio, background or profile picture get your profile hidden until you fix it.','<b>In posts and chats:</b> uncensored posts or comments are poofed and you get a warning.'],ch:[['w','Profile hidden until fixed'],['w','Poofed + warning']]},
 {i:'no',c:'#C9A6F0',t:'Think of the Pebbles',s:'No 16+/18+ content',l:'This is a family-friendly zone!',li:['<b>16+ profiles:</b> things like ahegao, suggestive jokes or looking for ERP (erotic roleplay) in your bio or theme, even if “censored”, get your profile hidden and a warning.','<b>16+ posts and chats:</b> suggestive messages or posts are poofed and you get a 1-hour Strike.','<b>18+ and ERP:</b> accounts made purely for ERP, sharing explicit 18+ content or listing detailed fetishes are shattered without warning. Let\'s keep it wholesome!'],ch:[['w','Profile: hidden + warning'],['k','Posts/chats: 1-hour Strike'],['k','Repeat (16+): 24-hour Strike'],['x','18+ / ERP: Shattered']]},
@@ -270,7 +269,6 @@ function pledge(on,fx){pl.setAttribute('aria-pressed',on);pl.textContent=on?'Tha
 pledge(L('bc-read')=='1');
 pl.onclick=()=>{const on=pl.getAttribute('aria-pressed')!='true';pledge(on,1);L('bc-read',on?'1':'0')};
 
-/* --- FUN ADDITION: Random SU Quotes --- */
 const quotes = [
   ["If every porkchop were perfect, we wouldn't have hotdogs!", "Greg Universe"],
   ["I am a conversation.", "Garnet"],
@@ -286,7 +284,6 @@ const [qt, qa] = quotes[Math.floor(Math.random() * quotes.length)];
 $('#quote-text').textContent = `“${qt}”`;
 $('#quote-author').textContent = `- ${qa}`;
 
-/* --- FUN ADDITION: Magic Star Clicks --- */
 document.addEventListener('mousedown', e => {
     if (e.target.closest('button') || e.target.closest('a') || e.target.closest('summary')) return;
     if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
